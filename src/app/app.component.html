@@ -1,0 +1,23 @@
+<div id="wrapper">
+  <nav>
+    <ul>
+      <li *ngFor="let item of mainMenuItems">
+        <a [routerLink]="[ item.relativeUrl ]" routerLinkActive="active">{{ item.title }}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <header>
+    <video loop autoplay>
+      <source src="/wp-content/themes/basic-angular2-theme/assets/videos/aloha.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <h1>Basic Angular 2 Theme for WordPress</h1>
+  </header>
+
+  <div class="blackbar"></div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
