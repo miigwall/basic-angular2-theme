@@ -39,11 +39,28 @@ header {
 header video {
    width: 100%;
 	 height: 710px;
-	 transform: scale(2.1)	
+	 transform: scale(2.1);
+   position: relative;
+   z-index: 10;
 }
 
 header h1 {
 	padding-top: 220px;
+}
+
+header #site_details {
+   margin-top: 230px; 
+   z-index: 20;
+   position: relative;
+}
+
+header #site_details #site_title {
+   font-size: 50px; 
+}
+
+header #site_details #site_description {
+   font-size: 20px;
+   font-style: italic;
 }
 
 nav {

@@ -12,6 +12,8 @@ import { HttpService } from '../services/http.service'
 export class AppComponent {
   public q: string
   public mainMenuItems: any[]
+  public settings
+  public settingsLoaded = false
 
   constructor(
     private router: Router, 
@@ -19,12 +21,19 @@ export class AppComponent {
   ){}
 
   ngOnInit() {
-    this.getMainMenu() 
+    this.getMainMenu()
+    this.getSettings()
+  }
+
+  getSettings() {
+    this.httpService.get('basic-angular2-theme/v1/details', (settings) => {
+      this.settingsLoaded = true
+      this.settings = settings
+    })
   }
 
   getMainMenu() {
     this.httpService.get('basic-angular2-theme/v1/menu-locations/main-menu', (data) => {
-      console.log(data)
       this.mainMenuItems = data
     })
   }

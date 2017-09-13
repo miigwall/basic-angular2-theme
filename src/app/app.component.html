@@ -1,4 +1,4 @@
-<div id="wrapper">
+<div id="wrapper" *ngIf="settingsLoaded == true">
   <nav>
     <ul>
       <li *ngFor="let item of mainMenuItems">
@@ -8,11 +8,14 @@
   </nav>
 
   <header>
+    <div id="site_details">
+      <div id="site_title">{{ settings.name }}</div>
+      <div id="site_description">{{ settings.description }}</div>
+    </div>
     <video loop autoplay>
       <source src="/wp-content/themes/basic-angular2-theme/assets/videos/aloha.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+      Your browser does not support the video tag.
     </video>
-    <h1>Basic Angular 2 Theme for WordPress</h1>
   </header>
 
   <div class="blackbar"></div>

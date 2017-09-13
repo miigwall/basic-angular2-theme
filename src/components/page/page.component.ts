@@ -18,17 +18,18 @@ export class PageComponent {
   constructor(
   	private router: Router,
   	private route: ActivatedRoute, 
-  	private httpService: HttpService
+  	private httpService: HttpService,
+    private sanitizer: DomSanitizer
   ){}
 
   ngOnInit() {
   	this.loaded = false
   	this.sub = this.route.params.subscribe(params => {
-  		this.httpService.get('wp/v2/pages?slug=' + params['pageId'], (pageData) => {
+  		this.httpService.get('basic-angular2-theme/v1/get/page/' + params['pageId'], (pageData) => {
   			this.loaded = true
   			if (pageData.length > 0) {
-  				this.pageData = pageData[0]
-  				console.log(pageData[0])
+          this.pageData = pageData[0]
+          this.pageData.post_content = this.sanitizer.bypassSecurityTrustHtml(this.pageData.post_content)
   			} else {
   				this.router.navigate([ '/notfound' ]);
   			}
